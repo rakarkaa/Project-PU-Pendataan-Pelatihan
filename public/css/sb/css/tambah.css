@@ -1,0 +1,13 @@
+.image-container {
+    width: 100%;
+    height: 450px;  /* tinggi container, bebas kamu ubah */
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.image-full {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* supaya seluruh ilustrasi masuk, tidak terpotong */
+    object-position: center;
+}
