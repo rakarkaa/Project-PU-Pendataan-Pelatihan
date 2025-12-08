@@ -5,15 +5,31 @@ use App\Http\Controllers\KepemimpinanCont;
 use App\Http\Controllers\NasionalduaController;
 use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\PengawasController;
+use App\Http\Controllers\FungsionalController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 //beranda
 Route::get('/', function () {
     return view('pages/beranda');
 });
 
-Route::get('login', function () {
-    return view('login/login');
-});
+
+//login
+Route::get('/login', [LoginController::class,'index']);
+Route::post('/login', [LoginController::class,'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/login')->with('success', 'Berhasil logout');
+})->name('logout');
+
+
+//register
+Route::get('/register', [RegisterController::class,'index']);
+Route::post('/register', [RegisterController::class,'store']);
+
 
 // Route::get('/kepemimpinan', function () {
 //     $biodata = [
@@ -69,6 +85,19 @@ Route::get('/pengawas/{id}/edit', [PengawasController::class,'edit']); //edit
 Route::put('/pengawas/{id}', [PengawasController::class,'update']); //update
 
 Route::delete('/pengawas/{id}',[PengawasController::class, 'destroy']); //hapus
+
+//Fungsional
+
+Route::get('/fungsional', [FungsionalController::class, 'index'])->name('fungsional.index');
+Route::get('/fungsional/create', [FungsionalController::class, 'create'])->name('fungsional.create');
+Route::post('/fungsional', [FungsionalController::class, 'store'])->name('fungsional.store');
+
+Route::get('/fungsional/{id}', [FungsionalController::class, 'show'])->name('fungsional.show'); // ★ penting!
+Route::get('/fungsional/{id}/edit', [FungsionalController::class, 'edit'])->name('fungsional.edit');
+
+Route::put('/fungsional/{id}', [FungsionalController::class, 'update'])->name('fungsional.update');
+Route::delete('/fungsional/{id}', [FungsionalController::class, 'destroy'])->name('fungsional.destroy');
+
 
 
 

@@ -32,18 +32,18 @@
                                 <div id="emailHelp" class="form-text text-danger">{{ $message }}</div>
                             @enderror                       
                         <div class="mb-3">
-                            <label for="" class="form-label">Tanggal Mulai</label>
-                            <input type="text" name="tgl_mulai" class="form-control" value="{{ old('tgl_mulai') }}">
+                            <label for="" class="form-label">Tanggal Masuk</label>
+                        <input type="date" name="tgl_mulai" class="form-control" value="{{ old('tgl_mulai') }}">
                         </div>
                             @error('tgl_mulai')
-                                <div id="emailHelp" class="form-text text-danger">{{ $message }}</div>
+                        <div class="form-text text-danger">{{ $message }}</div>
                             @enderror
                         <div class="mb-3">
                             <label for="" class="form-label">Tanggal Akhir</label>
-                            <input type="text" name="tgl_akhir" class="form-control" value="{{ old('tgl_akhir') }}">
+                        <input type="date" name="tgl_akhir" class="form-control" value="{{ old('tgl_akhir') }}">
                         </div>
                             @error('tgl_akhir')
-                                <div id="emailHelp" class="form-text text-danger">{{ $message }}</div>
+                        <div class="form-text text-danger">{{ $message }}</div>
                             @enderror
                         <button type="submit" class="btn btn-primary">Submit</button>
                         <a href="/administrator" class="btn btn-secondary" type="button">Kembali</a>

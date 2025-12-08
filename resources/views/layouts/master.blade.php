@@ -63,6 +63,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header"> </h6>
+                        <a class="collapse-item" href="/fungsional">Pelatihan Fungsional</a>
                         <a class="collapse-item" href="/kepemimpinan">Pelatihan Kepemimpinan</a>
                         <a class="collapse-item" href="/nasionaldua">Pelatihan Kepemimpinan <br> Nasional Tingkat 2</a>
                         <a class="collapse-item" href="/administrator">Pelatihan Kepemimpinan <br> Administrator</a>
@@ -82,7 +83,9 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header"></h6>
-                        <a class="collapse-item" href="utilities-other.html">Logout</a>
+                        <a class="collapse-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                            Logout
+                        </a>
                     </div>
                 </div>
             </li>
@@ -241,7 +244,10 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button class="btn btn-primary" type="submit">Logout</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -265,6 +271,8 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('css/sb/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('css/sb/js/demo/chart-pie-demo.js') }}"></script>
+
+    
 
 </body>
 

@@ -25,11 +25,13 @@
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Tanggal Mulai</label>
-                            <input type="text" name="tgl_mulai" class="form-control" value="{{ $data->tgl_mulai }}">
+                            <input type="date" name="tgl_mulai" class="form-control" value="{{ old('tgl_mulai', $data->tgl_mulai) }}">
+
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Tanggal Akhir</label>
-                            <input type="text" name="tgl_akhir" class="form-control" value="{{ $data->tgl_akhir }}">
+                            <input type="date" name="tgl_akhir" class="form-control" value="{{ old('tgl_akhir', $data->tgl_akhir) }}">
+
                         </div>
                         <button type="submit" class="btn btn-primary">Update</button>
                         <a href="/kepemimpinan" class="btn btn-secondary" type="button">Kembali</a>
