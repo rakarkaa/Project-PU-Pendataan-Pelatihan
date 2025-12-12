@@ -9,10 +9,13 @@ use App\Http\Controllers\FungsionalController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 
-//beranda
+//halaman pertama
 Route::get('/', function () {
     return view('pages/beranda');
 });
+
+//count
+Route::get('/', [FungsionalController::class, 'dashboard'])->name('beranda');
 
 
 //login

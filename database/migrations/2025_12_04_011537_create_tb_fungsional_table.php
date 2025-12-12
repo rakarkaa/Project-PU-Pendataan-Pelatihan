@@ -27,6 +27,7 @@ return new class extends Migration
 
         $table->string('usulan_pelatihan');
         $table->string('penyelenggara_mekanisme');
+        $table->string('pelaksanaan');
         $table->string('jenis_kepesertaan');
 
         $table->enum('kehadiran', ['Hadir', 'Tidak Hadir'])->default('Hadir');

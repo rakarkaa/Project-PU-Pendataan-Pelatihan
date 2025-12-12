@@ -13,12 +13,12 @@
 
                         <div class="d-grid gap-2 col-12 mx-auto"><br>
                         <a href="{{ route('fungsional.create') }}" class="btn btn-primary" type="button">Tambah Data</a>
-                        </div>
+                        </div><br>
                         
-                        <div class="card-body table-responsive">
-                            <table class="table table-striped table-bordered">
+                        <div class="card-body table-responsive text-center">
+                            <table id ="fungsional" class="table table-striped table-bordered">
                                 <thead>
-                                    <tr>
+                                    <tr class="text-nowrap">
                                         <th>No</th>
                                         <th>Nama</th>
                                         <th>NIP</th>
@@ -33,6 +33,7 @@
 
                                         <th>Usulan Pelatihan</th>
                                         <th>Penyelenggara / Mekanisme</th>
+                                        <th>Pelaksanaan</th>
                                         <th>Jenis Kepesertaan</th>
 
                                         <th>Kehadiran</th>
@@ -48,7 +49,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($data as $item)
-                                    <tr>
+                                    <tr class="text-nowrap">
                                     <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $item->nama }}</td>
                                         <td>{{ $item->nip }}</td>
@@ -63,6 +64,7 @@
 
                                         <td>{{ $item->usulan_pelatihan }}</td>
                                         <td>{{ $item->penyelenggara_mekanisme }}</td>
+                                        <td>{{ $item->pelaksanaan }}</td>
                                         <td>{{ $item->jenis_kepesertaan }}</td>
 
                                         <td>{{ $item->kehadiran }}</td>
@@ -73,11 +75,13 @@
                                         <td>{{ $item->status }}</td>
                                         <td>{{ $item->keterangan }}</td>
                                     <td>
-                                        <!-- <button type="button" class="btn btn-danger">Hapus</button> -->
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalHapus_{{$item->id}}">
-                                            Hapus Data
-                                        </button>
-                                        <a href="{{ route('fungsional.edit', $item->id) }}" class="btn btn-warning">edit</a>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <!-- <button type="button" class="btn btn-danger">Hapus</button> -->
+                                            <button type="button" class="btn btn-danger btn-sm mr-2" data-toggle="modal" data-target="#modalHapus_{{$item->id}}">
+                                                Hapus Data
+                                            </button>
+                                            <a href="{{ route('fungsional.edit', $item->id) }}" class="btn btn-warning btn-sm">edit</a>
+                                        </div>
                                     </td>
                                     </tr>
 
@@ -117,4 +121,6 @@
             </div>
             @endforeach
             <!-- End of Main Content -->
+
+
 @endsection

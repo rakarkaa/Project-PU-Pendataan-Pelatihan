@@ -99,10 +99,20 @@
                                     <input type="text" name="penyelenggara_mekanisme" class="form-control" value="{{ $data->penyelenggara_mekanisme }}" required>
                                 </div>
 
+                                <!-- Pelaksanaan -->
+                                <div class="mb-3">
+                                    <label>Pelaksanaan</label>
+                                    <input type="text" name="pelaksanaan" class="form-control" value="{{ $data->pelaksanaan }}" required>
+                                </div>
+
                                 <!-- Jenis Kepesertaan -->
                                 <div class="mb-3">
                                     <label>Jenis Kepesertaan</label>
-                                    <input type="text" name="jenis_kepesertaan" class="form-control" value="{{ $data->jenis_kepesertaan }}" required>
+                                    <select name="jenis_kepesertaan" class="form-control" required>
+                                        <option value="Utama" {{ $data->jenis_kepesertaan == 'Utama' ? 'selected' : '' }}>Utama</option>
+                                        <option value="Cadangan" {{ $data->jenis_kepesertaan == 'Cadangan' ? 'selected' : '' }}>Cadangan</option>
+                                        <option value="Tambahan" {{ $data->jenis_kepesertaan == 'Tambahan' ? 'selected' : '' }}>Tambahan</option>
+                                    </select>
                                 </div>
 
                             </div>
@@ -158,6 +168,8 @@
                                         <option value="">-- Pilih --</option>
                                         <option value="Lulus" {{ $data->status == 'Lulus' ? 'selected' : '' }}>Lulus</option>
                                         <option value="Tidak Lulus" {{ $data->status == 'Tidak Lulus' ? 'selected' : '' }}>Tidak Lulus</option>
+                                        <option value="Belum ada Sertifikat" {{ $data->status == 'Belum ada Sertifikat' ? 'selected' : '' }}>Belum ada Sertifikat</option>
+                                        <option value="On Progress" {{ $data->status == 'On Progress' ? 'selected' : '' }}>On Progress</option>
                                     </select>
                                 </div>
 
@@ -172,7 +184,7 @@
                         </div>
 
                         <button type="submit" class="btn btn-primary">Update</button>
-                        <a href="/nasionaldua" class="btn btn-secondary" type="button">Kembali</a>
+                        <a href="/fungsional" class="btn btn-secondary" type="button">Kembali</a>
                         </form>
                         
                     </div>

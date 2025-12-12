@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Fungsional;
 use Illuminate\Http\Request;
+use App\Models\Kepemimpinan;
+use App\Models\Nasionaldua;
+use App\Models\Pengawas;
+use App\Models\Administrator;
+
 
 class FungsionalController extends Controller
 {
@@ -43,6 +48,7 @@ class FungsionalController extends Controller
 
             'usulan_pelatihan'       => 'required|string|max:255',
             'penyelenggara_mekanisme'=> 'required|string|max:255',
+            'pelaksanaan'            => 'required|string|max:255',
             'jenis_kepesertaan'      => 'required|string|max:255',
 
             'kehadiran'              => 'required|in:Hadir,Tidak Hadir',
@@ -50,7 +56,7 @@ class FungsionalController extends Controller
 
             'nilai_akhir'            => 'nullable|numeric',
             'predikat'               => 'nullable|string|max:255',
-            'status'                 => 'nullable|in:Lulus,Tidak Lulus',
+            'status'                 => 'nullable|in:Lulus,Tidak Lulus,Belum ada Sertifikat,On Progress',
             'keterangan'             => 'nullable|string',
         ]);
 
@@ -100,6 +106,7 @@ class FungsionalController extends Controller
 
             'usulan_pelatihan'       => 'required|string|max:255',
             'penyelenggara_mekanisme'=> 'required|string|max:255',
+            'pelaksanaan'            => 'required|string|max:255',
             'jenis_kepesertaan'      => 'required|string|max:255',
 
             'kehadiran'              => 'required|in:Hadir,Tidak Hadir',
@@ -107,7 +114,7 @@ class FungsionalController extends Controller
 
             'nilai_akhir'            => 'nullable|numeric',
             'predikat'               => 'nullable|string|max:255',
-            'status'                 => 'nullable|in:Lulus,Tidak Lulus',
+            'status'                 => 'nullable|in:Lulus,Tidak Lulus,Belum ada Sertifikat,On Progress',
             'keterangan'             => 'nullable|string',
         ]);
 
@@ -129,4 +136,16 @@ class FungsionalController extends Controller
         return redirect()->route('fungsional.index')
                          ->with('success', 'Data berhasil dihapus!');
     }
+
+    public function dashboard()
+    {
+        $fs = Fungsional::count();
+        $pk = Kepemimpinan::count();
+        $pkn = Nasionaldua::count();
+        $pka = Administrator::count();
+        $pkp = Pengawas::count();
+
+        return view('pages.beranda', compact('fs','pk','pkn','pka','pkp'));
+    }
+
 }

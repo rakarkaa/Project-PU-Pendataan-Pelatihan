@@ -86,6 +86,11 @@
                                 <input type="text" name="penyelenggara_mekanisme" class="form-control" value="{{ old('penyelenggara_mekanisme') }}">
                                 @error('penyelenggara_mekanisme') <div class="text-danger">{{ $message }}</div> @enderror
                             </div>
+                             <div class="mb-3">
+                                <label class="form-label">Pelaksanaan</label>
+                                <input type="text" name="pelaksanaan" class="form-control" value="{{ old('pelaksanaan') }}">
+                                @error('pelaksanaan') <div class="text-danger">{{ $message }}</div> @enderror
+                            </div>
 
                         </div>
                     </div>
@@ -97,7 +102,12 @@
 
                             <div class="mb-3">
                                 <label class="form-label">Jenis Kepesertaan</label>
-                                <input type="text" name="jenis_kepesertaan" class="form-control" value="{{ old('jenis_kepesertaan') }}">
+                                <select type="text" name="jenis_kepesertaan" class="form-control" value="{{ old('jenis_kepesertaan') }}">
+                                    <option value="">-- Pilih Kepesertaan --</option>
+                                    <option value="Utama" {{ old('jenis_kepesertaan') }}>Utama</option>
+                                    <option value="Cadangan" {{ old('jenis_kepesertaan') }}>Cadangan</option>
+                                    <option value="Tambahan" {{ old('jenis_kepesertaan') }}>Tambahan</option>
+                                </select>
                                 @error('jenis_kepesertaan') <div class="text-danger">{{ $message }}</div> @enderror
                             </div>
 
@@ -139,6 +149,8 @@
                                     <option value="">-- Pilih Status --</option>
                                     <option value="Lulus" {{ old('status')=='Lulus'?'selected':'' }}>Lulus</option>
                                     <option value="Tidak Lulus" {{ old('status')=='Tidak Lulus'?'selected':'' }}>Tidak Lulus</option>
+                                    <option value="Belum ada Sertifikat" {{ old('status')=='Belum ada Sertifikat'?'selected':'' }}>Belum ada Sertifikat</option>
+                                    <option value="On Progress" {{ old('status')=='On Progress'?'selected':'' }}>On Progress</option>
                                 </select>
                                 @error('status') <div class="text-danger">{{ $message }}</div> @enderror
                             </div>
@@ -152,7 +164,10 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary col-12">Simpan Data</button>
+                        <div class="d-flex gap-3">
+                            <button type="submit" class="btn btn-primary mr-2">Tambah</button>
+                            <a href="/fungsional" class="btn btn-secondary">Kembali</a>
+                        </div>
                 </form>
             </div>
         </div>

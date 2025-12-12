@@ -24,6 +24,7 @@ class Fungsional extends Model
         'instansi',
         'usulan_pelatihan',
         'penyelenggara_mekanisme',
+        'pelaksanaan',
         'jenis_kepesertaan',
         'kehadiran',
         'alasan_tidak_hadir',

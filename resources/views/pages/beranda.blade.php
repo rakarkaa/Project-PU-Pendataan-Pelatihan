@@ -5,14 +5,15 @@
                     <div class="row">
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="col-xl-2 col-md-6 mb-4 mx-auto">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Pelatihan Kepemimpinan</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">-</div>
+                                                Pelatihan Fungsional</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $fs }}</div>
+
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -23,14 +24,14 @@
                         </div>
 
                                                <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="col-xl-2 col-md-6 mb-4 mx-auto">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Pelatihan Kepemimpinan Nasional Tingkat 2</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">-</div>
+                                                Pelatihan Kepemimpinan</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $pk }}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -41,14 +42,14 @@
                         </div>  
 
                                               <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="col-xl-2 col-md-6 mb-4 mx-auto">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Pelatihan Kepemimpinan Administrator</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">-</div>
+                                                Pelatihan Kepemimpinan Nasional Tingkat 2</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $pkn }}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -59,14 +60,32 @@
                         </div>
 
                                                <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="col-xl-2 col-md-6 mb-4 mx-auto">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Pelatihan Kepemimpinan Administrator</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $pka }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-user fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                                                                       <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-2 col-md-6 mb-4 mx-auto">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Pelatihan Kepemimpinan Pengawas</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">-</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $pkp }}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-user fa-2x text-gray-300"></i>
