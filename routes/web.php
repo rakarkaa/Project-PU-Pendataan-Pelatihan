@@ -14,8 +14,20 @@ Route::get('/', function () {
     return view('pages/beranda');
 });
 
+
 //count
 Route::get('/', [FungsionalController::class, 'dashboard'])->name('beranda');
+
+//exportFungsional
+Route::get('/fungsional/export/excel', [FungsionalController::class, 'exportExcel'])
+    ->name('fungsional.export.excel');
+
+//importFungsional
+Route::get('/fungsional/import', [FungsionalController::class, 'formImport'])
+    ->name('fungsional.import.form');
+
+Route::post('/fungsional/import', [FungsionalController::class, 'importExcel'])
+    ->name('fungsional.import');
 
 
 //login
@@ -28,22 +40,10 @@ Route::post('/logout', function () {
     return redirect('/login')->with('success', 'Berhasil logout');
 })->name('logout');
 
-
 //register
 Route::get('/register', [RegisterController::class,'index']);
 Route::post('/register', [RegisterController::class,'store']);
 
-
-// Route::get('/kepemimpinan', function () {
-//     $biodata = [
-//         'nama'=>'Muhammad Raka',
-//         'jabatan'=>'it',
-//         'unit'=>'it',
-//         'tgl_mulai'=>'12 januari 2025',
-//         'tgl_akhir'=>'12 januari 2025',   
-//     ];
-//     return view('pages/kepemimpinan',$biodata);
-// });
 
 //Kepemimpinan
 Route::get('/kepemimpinan', [KepemimpinanCont::class,'index']); //link
@@ -100,6 +100,11 @@ Route::get('/fungsional/{id}/edit', [FungsionalController::class, 'edit'])->name
 
 Route::put('/fungsional/{id}', [FungsionalController::class, 'update'])->name('fungsional.update');
 Route::delete('/fungsional/{id}', [FungsionalController::class, 'destroy'])->name('fungsional.destroy');
+
+Route::post('/fungsional/bulk-delete', 
+    [FungsionalController::class, 'bulkDelete']
+)->name('fungsional.bulk.delete');
+
 
 
 

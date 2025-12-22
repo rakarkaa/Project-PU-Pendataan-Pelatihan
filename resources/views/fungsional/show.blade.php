@@ -14,11 +14,28 @@
                         <div class="d-grid gap-2 col-12 mx-auto"><br>
                         <a href="{{ route('fungsional.create') }}" class="btn btn-primary" type="button">Tambah Data</a>
                         </div><br>
+
+                        <div class="d-flex justify-content-end mb-3">
+                            <button type="submit" class="btn btn-danger mr-2"
+                            onClick="return confirm('Yakin Hapus Data Terpilih?')">
+                            Hapus Terpilih
+                            </button>
+
+                            <a href="{{ route('fungsional.export.excel') }}" class="btn btn-success">
+                                Export Excel
+                            </a>
+
+                            <a href="{{ route('fungsional.import.form') }}" class="btn btn-info ml-2">
+                                Import Excel
+                            </a>
+                        </div>
                         
                         <div class="card-body table-responsive text-center">
                             <table id ="fungsional" class="table table-striped table-bordered">
                                 <thead>
                                     <tr class="text-nowrap">
+                                        <th>
+                                            <input type="checkbox" id="checkAll">
                                         <th>No</th>
                                         <th>Nama</th>
                                         <th>NIP</th>
@@ -48,8 +65,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <form action="{{ route('fungsional.bulk.delete') }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
                                     @foreach ($data as $item)
                                     <tr class="text-nowrap">
+                                        <td>
+                                            <input type="checkbox" name="ids[]" value="{{ $item->id }}" class="checkItem">
+                                        </td>
                                     <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $item->nama }}</td>
                                         <td>{{ $item->nip }}</td>
@@ -88,6 +111,8 @@
                                     @endforeach
                                     
                                 </tbody>
+
+                                    </form>
                             </table>
                         </div>
                     </div>
@@ -121,6 +146,22 @@
             </div>
             @endforeach
             <!-- End of Main Content -->
+
+             <!-- SCRIPT SELECT ALL -->
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const checkAll = document.getElementById('checkAll');
+                    const checkItems = document.querySelectorAll('.checkItem');
+
+                    if (checkAll) {
+                        checkAll.addEventListener('click', function () {
+                            checkItems.forEach(function (item) {
+                                item.checked = checkAll.checked;
+                            });
+                        });
+                    }
+                });
+            </script>
 
 
 @endsection
