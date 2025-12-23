@@ -15,6 +15,9 @@
                         <a href="{{ route('fungsional.create') }}" class="btn btn-primary" type="button">Tambah Data</a>
                         </div><br>
 
+                        <form action="{{ route('fungsional.bulk.delete') }}" method="POST">
+                        @csrf
+
                         <div class="d-flex justify-content-end mb-3">
                             <button type="submit" class="btn btn-danger mr-2"
                             onClick="return confirm('Yakin Hapus Data Terpilih?')">
@@ -35,7 +38,7 @@
                                 <thead>
                                     <tr class="text-nowrap">
                                         <th>
-                                            <input type="checkbox" id="checkAll">
+                                            <input type="checkbox" id="checkAll"></th>
                                         <th>No</th>
                                         <th>Nama</th>
                                         <th>NIP</th>
@@ -65,9 +68,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <form action="{{ route('fungsional.bulk.delete') }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
                                     @foreach ($data as $item)
                                     <tr class="text-nowrap">
                                         <td>
@@ -112,7 +112,7 @@
                                     
                                 </tbody>
 
-                                    </form>
+                        </form>
                             </table>
                         </div>
                     </div>
