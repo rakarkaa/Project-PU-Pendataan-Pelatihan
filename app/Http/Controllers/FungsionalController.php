@@ -18,6 +18,9 @@ use PhpOffice\PhpSpreadsheet\Style\Fill;
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
+use Carbon\Carbon;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
+
 class FungsionalController extends Controller
 {
     /**
@@ -351,8 +354,8 @@ class FungsionalController extends Controller
                 'nama' => $row[1],
                 'nip' => $row[2],
                 'tempat_lahir' => $row[3],
-                'tanggal_lahir' => $row[4],
-                'jenis_kelamin' => $row[5],
+                'tanggal_lahir' => $this->formatTanggalExcel($row[4]),
+                'jenis_kelamin' => $this->mapJenisKelamin($row[5]),
 
                 'jabatan' => $row[6],
                 'unit_kerja' => $row[7],
@@ -367,9 +370,9 @@ class FungsionalController extends Controller
                 'kehadiran' => $row[14],
                 'alasan_tidak_hadir' => $row[15],
 
-                'nilai_akhir' => $row[16],
+                'nilai_akhir' => $this->parseDecimal($row[16]),
                 'predikat' => $row[17],
-                'status' => $row[18],
+                'status' => $this->mapStatus($row[18]),
                 'keterangan' => $row[19],
             ]);
         }
@@ -390,6 +393,92 @@ class FungsionalController extends Controller
         return redirect()->route('fungsional.index')
             ->with('message', 'Data terpilih berhasil dihapus');
     }
+
+        //import helper tanggal
+        private function formatTanggalExcel($value)
+    {
+        if (!$value || $value === '-' || $value === '?') {
+            return null;
+        }
+
+        if (is_numeric($value)) {
+            return Carbon::instance(
+                \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value)
+            )->format('Y-m-d');
+        }
+
+        try {
+            return Carbon::parse($value)->format('Y-m-d');
+        } catch (\Exception $e) {
+            return null;
+        }
+    }
+
+        //import helper jenis kelamin
+        private function mapJenisKelamin($value)
+    {
+        if (empty($value)) {
+            return null;
+        }
+
+        $value = strtolower(trim($value));
+
+        if (in_array($value, ['l', 'laki', 'laki-laki', 'pria'])) {
+            return 'Laki-laki';
+        }
+
+        if (in_array($value, ['p', 'perempuan', 'wanita'])) {
+            return 'Perempuan';
+        }
+
+        return null; // selain itu dianggap kosong
+    }
+
+        //import helper decimal
+        private function parseDecimal($value)
+    {
+        if ($value === null) {
+            return null;
+        }
+
+        $value = trim($value);
+
+        if ($value === '' || $value === '-' || strtolower($value) === 'n/a') {
+            return null;
+        }
+
+        // Pastikan numeric
+        if (!is_numeric($value)) {
+            return null;
+        }
+
+        return (float) $value;
+    }
+
+        //import helper status
+        private function mapStatus($value)
+    {
+        if ($value === null) {
+            return null;
+        }
+
+        $value = strtolower(trim($value));
+
+        if ($value === 'lulus') {
+            return 'Lulus';
+        }
+
+        if (
+            $value === 'tidak lulus' ||
+            $value === 'tidak'
+        ) {
+            return 'Tidak Lulus';
+        }
+
+        // SEMUA SELAIN ITU
+        return null;
+    }
+
 
 
 

@@ -16,19 +16,19 @@ return new class extends Migration
 
         $table->string('nama');
         $table->string('nip');
-        $table->string('tempat_lahir');
-        $table->date('tanggal_lahir');
-        $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
+        $table->string('tempat_lahir')->nullable();
+        $table->date('tanggal_lahir')->nullable();
+        $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan'])->nullable();
 
-        $table->string('jabatan');
-        $table->string('unit_kerja');
-        $table->string('unit_organisasi');
-        $table->string('instansi');
+        $table->string('jabatan')->nullable();
+        $table->string('unit_kerja')->nullable();
+        $table->string('unit_organisasi')->nullable();
+        $table->string('instansi')->nullable();
 
-        $table->string('usulan_pelatihan');
-        $table->string('penyelenggara_mekanisme');
-        $table->string('pelaksanaan');
-        $table->string('jenis_kepesertaan');
+        $table->string('usulan_pelatihan')->nullable();
+        $table->string('penyelenggara_mekanisme')->nullable();
+        $table->string('pelaksanaan')->nullable();
+        $table->string('jenis_kepesertaan')->nullable();
 
         $table->enum('kehadiran', ['Hadir', 'Tidak Hadir'])->default('Hadir');
         $table->text('alasan_tidak_hadir')->nullable();
